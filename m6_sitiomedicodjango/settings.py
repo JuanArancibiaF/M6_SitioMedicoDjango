@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'app1',
-    'formulariosBD',
+    'form',
 ]
 
 MIDDLEWARE = [
@@ -77,7 +77,7 @@ WSGI_APPLICATION = 'm6_sitiomedicodjango.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'intersaluddb',
+        'NAME': 'intersalud',
         'USER': 'juan',
         'PASSWORD': '1234',
         'HOST': 'localhost',

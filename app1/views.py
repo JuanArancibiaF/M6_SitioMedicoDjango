@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.template import loader, context
 from django.http import HttpResponse
 from django.http import HttpResponsePermanentRedirect
-from formulariosBD.forms import FormularioBusqueda
+from form.forms import FormularioBusqueda
 
 
 # Create your views here.
