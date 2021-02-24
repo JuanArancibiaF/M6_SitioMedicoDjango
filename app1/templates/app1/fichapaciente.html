@@ -6,18 +6,148 @@
 
 <body>
   <div class="jumbotron">
-    <div class="col sm">
-      <div class="jumbotron">
-        <h1 class="display-4">Ficha Medica</h1>
-        <p class="lead">Uso exclisivo del Paciente </p>
-        <hr class="my-4">
-      </div>
-    </div>
-  </div>
-  </div>
+    <div class="col sm"> <div>
+      <div>
 
-  <!-- Pdf de la ficha medica -->
-  <iframe src="{% static 'app1/ficha_medica_de_ejemplo.pdf'%}" width="100%" height="680px"></iframe>
+
+
+  <div class="jumbotron">
+      <h1 class="display-4">Ficha Paciente </h1>
+      <p class="lead">Perfil de Usuario </p>
+      <hr class="my-4">
+      <p>
+          <div>
+            
+          </div>
+  <!-- Datos -->
+
+
+  
+ 
+<div class = 'row'>
+  <ul>
+    <li><strong>Nombre:</strong> {{ usuario.nombre }}</li>
+    <li><strong>Apellido:</strong> {{ usuario.apellido }}</li>
+    <li><strong>Dirección:</strong> {{ usuario.direccion }}</li>
+    <li><strong>E-mail:</strong> {{ usuario.email }}</li>
+    <li><strong>Tutor de contacto:</strong> {{ usuario.tutor }}</li>
+    <li><strong>Enfermedades:</strong> {{ usuario.enfermedades }}</li>
+  </ul>
+
+ <!-- Inicio de grafico -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.js"></script>
+        <style>
+            .chart {
+                width:50%;
+                margin : 0 auto;
+            }
+        </style>
+
+<div class="chart">
+    <canvas id="barra"></canvas>
+</div>  
+
+</body>
+<script>
+var ctx= document.getElementById("barra");
+var barra= new Chart(ctx,{
+
+
+
+    type:"line",
+    data:{
+        labels:{{resultados.fecha|safe}},
+        datasets:[{
+                label:'colesterol',
+                data:{{resultados.colesterol }},
+                borderColor:['rgba(220, 20, 220, 1)'          
+                ], 
+                fill:false
+        },
+        {
+                label:'trigliceridos',
+                data:{{resultados.triglicerido }},
+                borderColor:['rgba(150, 150, 10, 1)'                  
+                ], 
+                fill:false
+        },
+        {
+                label:'orina',
+                data:{{resultados.orina }},
+                borderColor:['rgba(0, 80, 80, 1)'                
+                ], 
+                fill:false
+        },
+        {
+                label:'glucosa',
+                data:{{resultados.glucosa }},
+                borderColor:['rgba(40, 0, 0, 1)'                   
+                ], 
+                fill:false
+        },{
+                label:'bilirrubina',
+                data:{{resultados.bilirrubina }},
+                borderColor:['rgba(180, 50, 10, 1)'                   
+                ], 
+                fill:false
+        }]
+    },
+    options:{
+        scales:{
+            yAxes:[{
+                    ticks:{
+                        beginAtZero:true
+                    }
+            }]
+        }
+    }
+});
+</script>
+
+<!-- fin de grafico-->>
+
+
+
+</div>
+
+<!-- Tabla-->
+  <table class="table table-bordered">
+    
+    <colgroup>
+    
+      <colgroup span="2" style="background: rgba(128, 255, 0, 0.3); border: 1px solid rgba(100, 200, 0, 0.3);"></colgroup>
+      <colgroup span="2" style="background: rgba(255, 128, 0, 0.3); border: 1px solid rgba(200, 100, 0, 0.3);"></colgroup>
+      <colgroup span="2" style="background: rgba(110, 25, 0, 0.3); border: 1px solid rgba(100, 200, 0, 0.3);"></colgroup>
+      <colgroup span="2" style="background: rgba(155, 55, 0, 0.3); border: 1px solid rgba(200, 100, 0, 0.3);"></colgroup>
+    <thead>
+      <tr>
+        <th scope="col">Fecha</th>
+        <th scope="col">Colesterol</th>
+        <th scope="col">Triglicéridos</th>
+        <th scope="col">Orina</th>
+        <th scope="col">Glucosa</th>
+        <th scope="col">Bilirrubina</th>
+      </tr>
+    </thead>
+    <tbody>
+      
+
+      {% for examen in lista_examenes %}
+     
+      <tr>
+        <th scope="row">{{ examen.fecha }}</th>
+        <td>{{ examen.colesterol }}</td>
+        <td>{{ examen.triglicerido }}</td>
+        <td>{{ examen.orina }}</td>
+        <td>{{ examen.glucosa }}</td>
+        <td>{{ examen.bilirrubina }}</td>
+      </tr>
+      {% endfor %}
+     
+      <br>
+      <br>
+    </tbody>
+  </table>
 
 </body>
 

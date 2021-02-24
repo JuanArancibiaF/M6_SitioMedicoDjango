@@ -3,9 +3,8 @@ import datetime
 from django import forms
 from django.core import validators
 from django.core.exceptions import ValidationError
-from form.models import Pacientes, Examenes
 
-'''
+
 class FormularioBusqueda(forms.Form):
     Rut = forms.CharField(
             validators = [
@@ -13,5 +12,13 @@ class FormularioBusqueda(forms.Form):
 						    "El RUN no puede tener menos de 9 caracteres"),
                         validators.MaxLengthValidator( 10, 
 						    "El RUN no puede tener mas de 10 caracteres") ]) 
+             
+
+class FormularioBusquedaLogin(forms.Form):
+    Rut = forms.CharField(
+            validators = [
+                validators.MinLengthValidator( 9, 
+						    "El RUN no puede tener menos de 9 caracteres"),
+                        validators.MaxLengthValidator( 10, 
+						    "El RUN no puede tener mas de 10 caracteres") ]) 
     contra = forms.CharField()
-'''
