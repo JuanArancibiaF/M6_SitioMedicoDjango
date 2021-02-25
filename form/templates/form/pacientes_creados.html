@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block contenidos %}
+<body>
+<!--Se listan los pacientes vigentes-->
+<div class="jumbotron">
+    <h2> Listado de Pacientes Creados</h2>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                <th scope="col">Rut</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Apellidos</th>
+                <th scope="col">Email</th>
+                <th scope="col">Tutor</th>
+                <th scope="col">Direccion</th>
+                <th scope="col">Enfermedades</th>
+                <th scope="col">Borrar</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for paciente in lista_pacientes %}
+                <tr>
+                    <th scope="row">{{ paciente.rut }}</th>
+                    <td>{{ paciente.nombre }}</td>
+                    <td>{{ paciente.apellido }}</td>
+                    <td>{{ paciente.email }}</td>
+                    <td>{{ paciente.tutor }}</td>
+                    <td>{{ paciente.direccion }}</td>
+                    <td>{{ paciente.enfermedades }}</td>
+                    <td><a href="{% url 'form:eliminar_pacientes' rut=paciente.rut %}" 
+                       class="card-title">Borrar</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+</div>
+
+</body>
+{% endblock %}

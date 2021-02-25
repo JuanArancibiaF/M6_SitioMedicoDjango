@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block contenidos %}
+<body>
+
+<!--Pregunta si el paciente se elimina o no, seleccionado en lista_cliente.html-->
+    <div class = "jumbotron">
+        <div class = "center-text">
+            <form action="{% url 'form:eliminar_pacientes' rut=rut %}" method="POST">
+                {% csrf_token %}
+                Se va a Eliminar Paciente con RUT N°  = {{rut}}.
+                ¿Desea confirmar la acción?
+                <input type="submit" value="Sí">
+            </form>  
+        </div>
+    </div>
+
+</body>
+{% endblock %}

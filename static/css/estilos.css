@@ -229,10 +229,3 @@ footer.bottom {
     margin: 25px;
 }
 
-/* Lista de Pacientes.html en app_forms */
-.h1 {
-    text-align: center;
-    font-weight: bold;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    padding: 3px;
-}

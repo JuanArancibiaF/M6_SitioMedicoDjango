@@ -10,8 +10,8 @@ class FormularioBusqueda(forms.Form):
             validators = [
                 validators.MinLengthValidator( 9, 
 						    "El RUN no puede tener menos de 9 caracteres"),
-                        validators.MaxLengthValidator( 10, 
-						    "El RUN no puede tener mas de 10 caracteres") ]) 
+                        validators.MaxLengthValidator( 12, 
+						    "El RUN no puede tener mas de 12 caracteres") ])
              
 
 class FormularioBusquedaLogin(forms.Form):
@@ -20,5 +20,5 @@ class FormularioBusquedaLogin(forms.Form):
                 validators.MinLengthValidator( 9, 
 						    "El RUN no puede tener menos de 9 caracteres"),
                         validators.MaxLengthValidator( 10, 
-						    "El RUN no puede tener mas de 10 caracteres") ]) 
+						    "El RUN no puede tener mas de 10 caracteres") ])
     contra = forms.CharField()

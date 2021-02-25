@@ -33,11 +33,11 @@
                 <!--Se agregan nuevas páginas a la barra de navegación-->
                 
                 <li class="nav-item">
-                    <a class="nav-link" href="">Crear paciente</a>
+                    <a class="nav-link" href="{% url 'form:crear_pacientes' %}">Crear paciente</a>
                 </li>
                
                 <li class="nav-item">
-                    <a class="nav-link" href="">Lista Pacientes</a>
+                    <a class="nav-link" href="{% url 'form:pacientes_creados' %}">Lista Pacientes</a>
                 </li> 
                 <!--En la lista_pacientes esta la opcion de de eliminarar paciente para eliminar-->
                 

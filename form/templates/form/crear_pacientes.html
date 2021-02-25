@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block contenidos %}
+<body>
+  
+<!--Fin Barra Navegación-->
+    
+    <div class="jumbotron">
+        <div class="center-text">
+            <form action="" method="POST" novalidate>
+                {% csrf_token %}
+                <table>
+                    {{formulario.as_table}}
+                </table>
+                <input type="hidden" name="elemento" value="pacientes">
+                <input type="submit" value="Crear">
+            </form>
+
+            <!--Se ingresan los datos de los pacientes-->
+            
+            {% for pacientes in lista_pacientes %}
+                <div class="col-md-6 col-lg-3">
+                <div class="card">
+                    <div class="card-body">
+                            <p class="card-text">{{pacientes.rut}}</p>
+                            <p class="card-text">{{pacientes.nombre}}</p>
+                            <p class="card-text">{{pacientes.apellido}}</p>
+                            <p class="card-text">{{pacientes.email}}</p>
+                            <p class="card-text">{{pacientes.tutor}}</p>
+                            <p class="card-text">{{pacientes.direccion}}</p>
+                            <p class="card-text">{{pacientes.enfermedades}}</p>
+                    </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% if ERROR == True %}
+    <script>
+        window.onload = function () { alert('El RUT de usuario ya existe'); }
+      </script>
+    {% endif %}
+</body>
+{% endblock %}
