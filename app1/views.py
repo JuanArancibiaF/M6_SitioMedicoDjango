@@ -74,8 +74,14 @@ def fichaMedica(request):
                 examen_filtrado['glucosa'].append(elemento['glucosa'])
                 examen_filtrado['bilirrubina'].append(elemento['bilirrubina'])
                 examen_filtrado['fecha'].append(elemento['fecha'])
-            print(examen_filtrado['fecha'])
-            context = {'usuario': usuario_data, 'lista_examenes': lista_examenes, 'resultados':examen_filtrado}
+           
+            fecha2 = []
+            #Transformacion de formato fecha para poder graficar.
+            for i in examen_filtrado['fecha']:
+                fecha2.append(i.strftime('%d/%m/%Y'))
+            print('Esto es lo que contiene FECHA2:', fecha2)
+
+            context = {'usuario': usuario_data, 'lista_examenes': lista_examenes, 'resultados':examen_filtrado, 'fecha':fecha2}
             return render(request, 'app1/fichapaciente.html', context)
         elif formulario_devuelto.is_valid() == False:
             formulario = FormularioBusqueda()
