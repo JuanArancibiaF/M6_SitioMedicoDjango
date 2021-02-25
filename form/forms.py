@@ -15,6 +15,14 @@ class FormularioPacientes(forms.Form):
     direccion = forms.CharField()
     enfermedades = forms.CharField()
 
+class EditarPacientes(forms.Form):
+    nombre = forms.CharField()
+    apellido = forms.CharField()
+    email = forms.CharField()
+    tutor = forms.CharField()
+    direccion = forms.CharField()
+    enfermedades = forms.CharField()
+
 class tipos_examenes(forms.Form):
     rut = forms.CharField()
     orina = forms.IntegerField()
@@ -23,3 +31,4 @@ class tipos_examenes(forms.Form):
     triglicerido = forms.IntegerField()
     bilirrubina = forms.IntegerField()
     fecha = forms.DateField()
+

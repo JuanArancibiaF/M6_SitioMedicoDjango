@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block contenidos %}
+<body>
+
+<!--Pregunta si el paciente se elimina o no, seleccionado en lista_cliente.html-->
+    <div class = "jumbotron">
+        <div class = "center-text">
+            <form action="{% url 'form:editar_pacientes' rut=rut %}" method="POST">
+                {% csrf_token %}
+                <table>
+                    {{formulario.as_table}}
+                </table>
+                <input type="submit" value="Editar">
+            </form>  
+        </div>
+    </div>
+
+</body>
+{% endblock %}

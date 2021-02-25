@@ -5,8 +5,6 @@
 {% block contenidos %}
 <body>
   
-<!--Fin Barra Navegación-->
-    
     <div class="jumbotron">
         <div class="center-text">
             <form action="" method="POST" novalidate>
@@ -19,7 +17,6 @@
             </form>
 
             <!--Se ingresan los datos de los pacientes-->
-            
             {% for pacientes in lista_pacientes %}
                 <div class="col-md-6 col-lg-3">
                 <div class="card">
@@ -38,7 +35,7 @@
     {% if ERROR == True %}
     <script>
         window.onload = function () { alert('El RUT de usuario ya existe'); }
-      </script>
+    </script>
     {% endif %}
 </body>
 {% endblock %}

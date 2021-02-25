@@ -17,6 +17,7 @@
                 <th scope="col">Tutor</th>
                 <th scope="col">Direccion</th>
                 <th scope="col">Enfermedades</th>
+                <th scope="col">Editar</th>
                 <th scope="col">Borrar</th>
                 </tr>
             </thead>
@@ -31,6 +32,8 @@
                     <td>{{ paciente.tutor }}</td>
                     <td>{{ paciente.direccion }}</td>
                     <td>{{ paciente.enfermedades }}</td>
+                    <td><a href="{% url 'form:editar_pacientes' rut=paciente.rut %}" 
+                        class="card-title">Editar</td>
                     <td><a href="{% url 'form:eliminar_pacientes' rut=paciente.rut %}" 
                        class="card-title">Borrar</td>
                 </tr>

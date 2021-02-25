@@ -17,10 +17,10 @@
     </div>
 </div>
 
+{% if ERROR == True %}
 <script>
-    function verificado() {
-    alert("El usuario ha sido registrado satisfactoriamente");
-    }
+    window.onload = function () { alert('El RUT de usuario NO existe'); }
 </script>
+{% endif %}
 
 {% endblock %}
