@@ -144,6 +144,12 @@ COPY public.form_examenes (id, orina, glucosa, colesterol, triglicerido, bilirru
 1	122	124	234	98	236	2021-02-23	13992802-4
 2	120	234	350	231	250	2021-01-01	19220125-k
 3	120	234	550	231	290	2021-01-02	22055784-7
+4	111	213	322	322	321	2021-01-10	10100200-1
+5	121	313	422	422	101	2021-01-15	10100200-1
+6	415	513	722	122	581	2021-01-16	10100200-1
+7	85	81	128	223	108	2021-02-14	13992802-4
+8	555	444	333	222	111	2021-02-14	13992802-4
+9	254	242	244	41	152	2021-01-15	13992802-4
 \.
 
 
@@ -153,8 +159,16 @@ COPY public.form_examenes (id, orina, glucosa, colesterol, triglicerido, bilirru
 
 COPY public.form_pacientes (rut, nombre, apellido, email, tutor, direccion, enfermedades) FROM stdin;
 13992802-4	Juan	Arancibia	jaf@outlook.com	no	republica 504	no
-19220125-k	Luciano	San Martin	luciano.sm@outlook.com	no	Agua Santa 50	no
 22055784-7	Mariana	Mottura	Mariana.m@outlook.com	no	Santa Maria 250	no
+10100200-1	Waldo	Cornejo	wc@gmail.com	Jonathan Olave	San Felipe 587	no
+13992802-7	juan	arancibia	juan.antonio.arancibia@gmail.com	jg	Av. Republica 504, casa 22,	f
+15727891-8	Carolina	Andrade	ca.andrade@gmail.com	Luis	Av. Limache	no
+15777958-4	Arturo	Vidal	av.choro@gmail.com	El Pitbull	Cerrillos 584	no
+11025147-1	Macarena	Sitchel	ma.si@gmail.com	no	Candelaria 584	no
+12789321-8	Carlitos	Saul	dead@gmail.com	no	Cementerio La Rioja s/n	no
+8999888-0	Pedro	Ruminot	ru@gmail.com	El guaton salinas	Caserio 12	no
+19220125-k	Luciano	San Martin	luciano.sm@outlook.com	Aang	Cementerio La Rioja s/n	no
+22036111-1	Anita	Alvarado	geisha@outlook.com	El Japo	La Dehesa 666	no
 \.
 
 
@@ -169,7 +183,7 @@ SELECT pg_catalog.setval('public.django_migrations_id_seq', 1, true);
 -- Name: form_examenes_id_seq; Type: SEQUENCE SET; Schema: public; Owner: juan
 --
 
-SELECT pg_catalog.setval('public.form_examenes_id_seq', 3, true);
+SELECT pg_catalog.setval('public.form_examenes_id_seq', 9, true);
 
 
 --
