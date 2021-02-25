@@ -26,6 +26,9 @@
  
 <div class = 'row'>
   <ul>
+    <img src="{% static 'app1/img/avatar.jpg'%}" alt="Avatar" class="avatar" width='250px' height='250px'>
+    <br>
+    <br>
     <li><strong>Nombre:</strong> {{ usuario.nombre }}</li>
     <li><strong>Apellido:</strong> {{ usuario.apellido }}</li>
     <li><strong>Dirección:</strong> {{ usuario.direccion }}</li>
@@ -56,7 +59,8 @@ var barra= new Chart(ctx,{
 
     type:"line",
     data:{
-        labels:{{resultados.fecha|safe}},
+      
+        labels:[1,2,3,4],
         datasets:[{
                 label:'colesterol',
                 data:{{resultados.colesterol }},

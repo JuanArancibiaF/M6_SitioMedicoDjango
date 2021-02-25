@@ -10,11 +10,11 @@
       <div class="jumbotron">
 
         <h1 class="display-4">Ficha Medica </h1>
-        <p class="lead"> Valida el rut del paciente para visualizar informacion Medica </p>
         <hr class="my-4">
-        <p>Ingrese su RUT</p>
+        <p>Ingrese el rut del paciente que desea buscar  |  Ingrese examenes de forma manual</p>
 
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
+          
           <div class="margen">
             <h2>Intersalud</h2>
           </div>
@@ -25,63 +25,45 @@
           </button>
 
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-              <li class="nav-item active">
-
-              </li>
-              <li class="nav-item">
-
-              </li>
-              <li class="nav-item dropdown">
-
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="#">Action</a>
-                  <a class="dropdown-item" href="#">Another action</a>
-                  <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="#">Something else here</a>
-                </div>
-              </li>
-              <li class="nav-item"></li>
-
-              </li>
-            </ul>
-            <div class = 'row'>
-              <div class='margen'>
+            <div class = 'container'>
+            <div class="row">
               <form action="" method="POST" novalidate>
                   {% csrf_token %}
-                  <div class="row">
+                  <div class="col-6">
+                    
+                      <table>
+                          {{formulario.as_table}}
+                      </table>
+                    </div>
+                    <div class="col-2"></div>
+                      <input class="btn btn-primary btn-lg" type="submit" value="Buscar">
+                    </div>
                   
-                    <table>
-                        {{formulario.as_table}}
-                    </table>
-                    <input class="btn btn-primary btn-lg" type="submit" value="Buscar">
-                
-                  </div>
               </form>
+            
+              <div class="margen">
+                <div class="col-2">
+                  <a class="btn btn-primary btn-lg" href="{% url 'form:ingresar_examenes' %}" role="button">Ingresar Examen</a>
+                </div>
+              </div>
             </div>
-            <div class="margen">
-            <p class="lead">
-              <a class="btn btn-primary btn-lg" href="{% url 'form:ingresar_examenes' %}" role="button">Ingresar Examen</a>
-            </p>
-            </div>
-            </div>
-            </div>
-
-            {% if invalid == True %}
-          
-            <script>
-              window.onload = function () { alert('El usuario no fue encontrado'); }
-            </script>
-            {% endif %}
-
-
-
+          </div>
           </div>
         </nav>
+
+
+        
       </div>
     </div>
   </div>
+
+  {% if invalid == True %}
+          
+    <script>
+      window.onload = function () { alert('El usuario no fue encontrado'); }
+    </script>
+  {% endif %}
+
 </body>
 
 {% endblock %}

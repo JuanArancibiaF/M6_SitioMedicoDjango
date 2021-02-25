@@ -112,6 +112,7 @@ def ingresar_examenes(request):
                         fecha= data['fecha'],
                         paciente= paciente1
                         )
+                
                 return redirect('app1:fichaMedica')
             except:
                 context = {'examenes': examenes_post, 'ERROR': True}

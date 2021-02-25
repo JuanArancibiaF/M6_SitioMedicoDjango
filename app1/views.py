@@ -36,7 +36,7 @@ def login(request):
         if formulario_devuelto.is_valid() == True:
             data = formulario_devuelto.cleaned_data
             
-            if data['Rut'] == '19220125-k' and data['contra'] == '12345':
+            if data['Rut'] == '19220125-k' and data['contraseña'] == '12345':
                 return redirect('app1:fichaMedica')
             else:
                 return render(request, 'app1/login.html', context)
@@ -65,26 +65,7 @@ def fichaMedica(request):
 
         if usuario_data != False:
             lista_examenes = contex_examenes_paciente(usuario_data['rut'])
-            '''
-            lista_examenes2 = []
-            for i in range (0,len(lista_examenes['lista_examenes'])):
-                lista2.append(lista_examenes['lista_examenes'][i]['rut'])
-
-
-            #creamos una nueva lista de examenes solo con el rut solicitado
-            rut = str(usuario_data['rut'])
-            for i in range (0, len(lista2)):
-                lista_examenes2.append(lista2[i].get(rut))
-            print(len(lista_examenes2))
-
-
-            #sacamos los elementos none ligados a otros rut
-            for elemento in lista_examenes2:
-                if elemento == None:
-                    print("elemento none")
-                else:
-                    datos.append(elemento)
-            '''
+            
             examen_filtrado = {'colesterol':[],'triglicerido':[],'orina': [],'glucosa':[],'bilirrubina':[], 'fecha':[]}
             for elemento in lista_examenes:   
                 examen_filtrado['colesterol'].append(elemento['colesterol'])

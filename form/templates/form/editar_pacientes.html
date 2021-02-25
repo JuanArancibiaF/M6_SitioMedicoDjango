@@ -7,13 +7,24 @@
 
 <!--Pregunta si el paciente se elimina o no, seleccionado en lista_cliente.html-->
     <div class = "jumbotron">
+        <h1>Editar datos del paciente</h1>
+        <hr class="my-4">
         <div class = "center-text">
             <form action="{% url 'form:editar_pacientes' rut=rut %}" method="POST">
                 {% csrf_token %}
                 <table>
                     {{formulario.as_table}}
                 </table>
-                <input type="submit" value="Editar">
+                <div class="center-text">
+                    <div class="margen">
+                        <input class="btn btn-primary btn-lg" type="submit" value="Editar">
+                    </div>
+                    <div class="margen">
+                        <a class="btn btn-primary btn-lg" href="{% url 'form:pacientes_creados' %}" role="button">Volver</a>
+                    </div>
+                    
+                </div>
+                
             </form>  
         </div>
     </div>

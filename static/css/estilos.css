@@ -22,7 +22,7 @@
 }   
 
 h1, h2, h3, h4, h5, h6, .navbar { 
-    font-family: 'Poiret One', cursive;
+    font-family: 'Gill Sans', sans-serif;
     text-align: center;
     padding: 3px;
 }
@@ -38,10 +38,17 @@ h1, h2, h3, h4, h5, h6, .navbar {
 
 .navbar a {
     font-weight: bold;
+    font-size: 23px;
+    color: white;
 }
 
 .navbar-dark {
     background-color:black;
+}
+
+table {
+    font-size: '40px';
+    width: 100%;
 }
 
 
@@ -55,7 +62,7 @@ h1, h2, h3, h4, h5, h6, .navbar {
 p {
     text-align: center;
     font-weight: bold;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: 'Gill Sans', sans-serif;
     padding: 3px;
 }
 
@@ -69,7 +76,7 @@ ul {
 }
 
 body {
-    font-family: Verdana, sans-serif;
+    font-family: 'Gill Sans', sans-serif;
 }
 
 .month {
@@ -166,7 +173,7 @@ body {
 }
 
 .btnStack {
-    font-family: Oswald;
+    font-family: 'Gill Sans', sans-serif;
     background-color: orange;
     color: white;
     text-decoration: none;
@@ -227,5 +234,9 @@ footer.bottom {
 
 .margen{
     margin: 25px;
+}
+
+.a{
+    font-size: '20px';
 }
 

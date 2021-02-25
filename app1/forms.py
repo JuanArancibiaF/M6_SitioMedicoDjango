@@ -21,4 +21,4 @@ class FormularioBusquedaLogin(forms.Form):
 						    "El RUN no puede tener menos de 9 caracteres"),
                         validators.MaxLengthValidator( 10, 
 						    "El RUN no puede tener mas de 10 caracteres") ])
-    contra = forms.CharField()
+    contraseña = forms.CharField()

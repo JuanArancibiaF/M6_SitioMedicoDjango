@@ -10,9 +10,14 @@
         <div class = "center-text">
             <form action="{% url 'form:eliminar_pacientes' rut=rut %}" method="POST">
                 {% csrf_token %}
-                Se va a Eliminar Paciente con RUT N°  = {{rut}}.
-                ¿Desea confirmar la acción?
-                <input type="submit" value="Sí">
+             <h3>   Se va a Eliminar Paciente con RUT N°  = {{rut}}.
+                ¿Desea confirmar la acción? </h3>
+                <div class="center-text">
+                    <div class="margen">
+                        <input class="btn btn-danger btn-md" type="submit" value="Sí">
+                        <a class="btn btn-primary btn-lg" href="{% url 'form:pacientes_creados' %}" role="button">Volver</a>
+                    </div>
+                </div>
             </form>  
         </div>
     </div>

@@ -3,23 +3,32 @@
 {% load static %}
 
 {% block contenidos %}
-<h1>Ingresar examenes</h1>
+
 <div class = 'jumbotron'>
+    <h1>Ingresar examenes</h1>
+    <hr class="my-4">
     <div class = 'center-text'>
         <form action="" method="POST"> 
             {% csrf_token %}
             <table>
                 {{examenes.as_table}}
             </table>
-            <input type="submit" value="Submit" onclick="verificado()">
+            <div class = "center-text">
             
+            <div class="margen">
+                <input class="btn btn-primary btn-lg" type="submit" value="ingresar">
+            </div>
+            <div class="margen">
+                <a class="btn btn-primary btn-lg" href="{% url 'app1:fichaMedica' %}" role="button">Volver</a>
+            </div>
+            </div>
         </form>
     </div>
 </div>
 
 {% if ERROR == True %}
 <script>
-    window.onload = function () { alert('El RUT de usuario NO existe'); }
+    window.onload = function () { alert('Los campos son incorrectos, verifique la fecha y RUT'); }
 </script>
 {% endif %}
 

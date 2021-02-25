@@ -6,32 +6,27 @@
 <body>
   
     <div class="jumbotron">
+        <h1>Ingresar datos del paciente</h1>
+        <hr class="my-4">
         <div class="center-text">
             <form action="" method="POST" novalidate>
                 {% csrf_token %}
                 <table>
                     {{formulario.as_table}}
                 </table>
-                <input type="hidden" name="elemento" value="pacientes">
-                <input type="submit" value="Crear">
+                <br>
+                <div class="center-text">
+                <div class="margen">
+                    <input class="btn btn-primary btn-lg" type="submit" value="Crear">
+                </div>
+                <div class="margen">
+                    <a class="btn btn-primary btn-lg" href="{% url 'app1:inicio' %}" role="button">Volver</a>
+                </div>    
+                </div>
             </form>
-
-            <!--Se ingresan los datos de los pacientes-->
-            {% for pacientes in lista_pacientes %}
-                <div class="col-md-6 col-lg-3">
-                <div class="card">
-                    <div class="card-body">
-                            <p class="card-text">{{pacientes.rut}}</p>
-                            <p class="card-text">{{pacientes.nombre}}</p>
-                            <p class="card-text">{{pacientes.apellido}}</p>
-                            <p class="card-text">{{pacientes.email}}</p>
-                            <p class="card-text">{{pacientes.tutor}}</p>
-                            <p class="card-text">{{pacientes.direccion}}</p>
-                            <p class="card-text">{{pacientes.enfermedades}}</p>
-                    </div>
-            {% endfor %}
         </div>
     </div>
+           
     {% if ERROR == True %}
     <script>
         window.onload = function () { alert('El RUT de usuario ya existe'); }
