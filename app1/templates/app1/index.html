@@ -11,10 +11,19 @@
     <p class="lead">InterSalud disponibiliza la informacion de sus usuarios al instante. Registrate junto con tu
       información medica, o inicia sesion si ya estas registrado</p>
     <hr class="my-4">
-    <p>Selecciona una opción</p>
+    <p>Selecciona una opción:</p>
     <p class="lead">
       <a class="btn btn-secondary btn-lg" href="{% url 'form:crear_pacientes' %}" role="button">Crear ficha paciente</a>
-      <a class="btn btn-secondary btn-lg" href="{% url 'app1:login' %}" role="button">Inicio de sesión</a>
+      {% if user.is_authenticated %}
+      <p><a class="btn btn-primary btn-lg" href="{% url 'logout' %}?next={% url 'app1:fichaMedica' %}">
+        Ficha Medica</a></p>
+      <p><br><b>Username:</b> {{ user.username }}<br><b>Email:</b> {{ user.email }}<br><b>Rol en la aplicación:</b> {{ user.perfil.rol }}</p><br>
+      <p><a class="btn btn-danger btn-lg" href="{% url 'logout' %}?next={% url 'app1:inicio' %}">
+        Cerrar Sesion</a></p>
+      {% else %}
+      <a class="btn btn-secondary btn-lg" href="{% url 'login' %}?next={{ request.path }}">
+        Iniciar sesión</a> 
+      {% endif %}
     </p>
   </div>
 

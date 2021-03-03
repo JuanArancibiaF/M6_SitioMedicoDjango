@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block contenidos %}
+
+<div class="margen">
+    
+    <h1>Iniciar sesión</h1>
+    {% if form.errors %}
+    <h4>Los datos de autenticación no corresponden. Trata nuevamente.</h4>
+    {% endif %}
+
+    {% if next %}
+    {% if user.is_authenticated %}
+    <h4>Tu cuenta no tiene acceso a este recurso.</h4>
+    <p>Debes tener los privilegios, contacta al administrador.</p>
+    {% else %}
+    <p>Ingresa tu nombre de usuario y contraseña.</p>
+    {% endif %}
+    {% endif %}
+    {% if user.is_authenticated == False%}
+    <div class="center-text">
+        <form method="post" action="{% url 'login' %}">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" class="btn btn-primary" value="Ingresar" />
+            <input type="hidden" name="next" value="{{ next }}" />
+        </form>
+    </div>
+    {% else %}
+        <p>Un usuario ya ha iniciado sesión</p>
+    {% endif %}
+   
+    
+</div>
+
+
+
+{% endblock %}

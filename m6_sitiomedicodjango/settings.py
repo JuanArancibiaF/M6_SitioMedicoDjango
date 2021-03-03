@@ -77,9 +77,9 @@ WSGI_APPLICATION = 'm6_sitiomedicodjango.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'intersalud',
-        'USER': 'juan',
-        'PASSWORD': '1234',
+        'NAME': 'intersalud2',
+        'USER': 'luciano',
+        'PASSWORD': 'luciano22',
         'HOST': 'localhost',
         'PORT': '5432',
     }
@@ -88,22 +88,22 @@ DATABASES = {
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
-
+'''
 AUTH_PASSWORD_VALIDATORS = [
     {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+       # 'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+       # 'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+       # 'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+     #  'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-
+'''
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
@@ -124,4 +124,6 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
+
+LOGIN_REDIRECT_URL = 'fichaMedica/'
 

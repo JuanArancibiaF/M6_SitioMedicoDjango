@@ -25,15 +25,15 @@
     
 
         <div class="collapse navbar-collapse" id="navbarText">
-            <ul class="navbar-nav mr-auto ">
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'app1:login' %}">Iniciar Sesion</a>
-                </li>        
+            <ul class="navbar-nav mr-auto ">       
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'form:crear_pacientes' %}">Crear paciente</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'form:pacientes_creados' %}">Lista Pacientes</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'form:crear_user' %}">Crear funcionario</a>
                 </li> 
                 
             </ul>

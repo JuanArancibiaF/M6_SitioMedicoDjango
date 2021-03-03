@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block contenidos %}
+<body>
+  
+    <div class="jumbotron">
+        <h1>Ingresar datos del usuario</h1>
+        <hr class="my-4">
+        <div class="center-text">
+            <form action="" method="POST" novalidate>
+                {% csrf_token %}
+                <table>
+                    <tr><th>
+                            <label for="id_username">Nombre de usuario:</label>
+                        </th><td>
+                            <input type="text" name="username" required id="id_username">
+                    </td></tr>
+                    <tr><th>
+                        <label for="id_email">Email:</label>
+                    </th><td>
+                            <input type="text" name="email" required id="id_email"></td></tr>
+                    <tr><th>
+                        <label for="id_password">Contraseña:</label>
+                    </th><td>
+                        <input type="password" name="password" required id="id_password">
+                    </td></tr>
+                    
+                </table>
+            </form>
+        </div>
+    </div>
+           
+    {% if ERROR == True %}
+    <script>
+        window.onload = function () { alert('El RUT de usuario ya existe'); }
+    </script>
+    {% endif %}
+</body>
+{% endblock %}

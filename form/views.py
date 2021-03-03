@@ -1,8 +1,28 @@
 from django.shortcuts import render, redirect
-from .forms import FormularioPacientes, tipos_examenes
-from .models import Pacientes, Examenes
+from .forms import FormularioPacientes, tipos_examenes, FormularioUser
+from .models import Pacientes, Examenes, Funcionario
 
 from django.conf import settings
+
+
+def crear_user(request):
+    if request.method=="GET":
+            formulario = FormularioUser()
+            context = {'formulario':formulario}
+            return render(request, 'form/crear_user.html', context)
+
+    elif request.method=="POST":
+            #print ("llego POST OK", request.POST)
+            
+            formulario_devuelto = FormularioUser(request.POST)
+
+
+def crear_funcionario(request):
+    if request.method=="GET":
+            formulario = FormularioPacientes()
+            contex = {'formulario':formulario}
+            return render(request, 'form/crear_pacientes.html', contex)
+
 
 # C de CRUD
 def crear_pacientes(request):

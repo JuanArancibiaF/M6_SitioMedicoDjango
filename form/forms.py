@@ -5,6 +5,10 @@ from django.core import validators
 from django.core.exceptions import ValidationError
 from form.models import Pacientes, Examenes
 
+class FormularioUser(forms.Form):
+    username= forms.CharField()
+    email = forms.CharField()
+    password = forms.CharField()
 
 class FormularioPacientes(forms.Form):
     rut = forms.CharField()
