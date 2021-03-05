@@ -3,38 +3,55 @@
 {% load static %}
 
 {% block contenidos %}
-
 <body>
   
     <div class="jumbotron">
-        <h1>Ingresar datos del paciente</h1>
+        <h1>Ingresar datos del usuario</h1>
         <hr class="my-4">
         <div class="center-text">
             <form action="" method="POST" novalidate>
                 {% csrf_token %}
+                
                 <table>
-                    {{formulario.as_table}}
+                    <tr><th>
+                            <label for="id_username">Nombre de usuario:</label>
+                        </th><td>
+                            <input type="text" name="username" required id="id_username">
+                    </td></tr>
+                    {{formularioFunc.as_table}}
+                    <tr><th>
+                        <label for="id_email">Email:</label>
+                    </th><td>
+                            <input type="text" name="email" required id="id_email"></td></tr>
+                    <tr><th>
+                        <label for="id_password">Contraseña:</label>
+                    </th><td>
+                        <input type="password" name="password" required id="id_password">
+                    </td></tr>
+                    <tr><th>
+                        <label for="id_password">Confirmar contraseña:</label>
+                    </th><td>
+                        <input type="password" name="passwordConfirm" required id="id_passwordConfirm">
+                    </td></tr>
+                    
                 </table>
-                <br>
+                
                 <div class="center-text">
-                <div class="margen">
-                    <input class="btn btn-primary btn-lg" type="submit" value="Crear">
-                </div>
-                <div class="margen">
-                    <a class="btn btn-primary btn-lg" href="{% url 'app1:inicio' %}" role="button">Volver</a>
-                </div>    
-                </div>
+                    <div class="margen">
+                        <input class="btn btn-primary btn-lg" type="submit" value="Crear">
+                    </div>
+                    <div class="margen">
+                        <a class="btn btn-primary btn-lg" href="{% url 'app1:inicio' %}" role="button">Volver</a>
+                    </div>    
+                    </div>
             </form>
         </div>
     </div>
            
     {% if ERROR == True %}
     <script>
-        window.onload = function () { alert('El RUT de usuario ya existe'); }
+        window.onload = function () { alert('He ocurrido un error con la creacion del funcionario'); }
     </script>
     {% endif %}
 </body>
-
-
-
 {% endblock %}

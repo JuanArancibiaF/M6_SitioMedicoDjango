@@ -1,63 +1,109 @@
 from django.shortcuts import render, redirect
-from .forms import FormularioPacientes, tipos_examenes, FormularioUser
+from .forms import FormularioPacientes, tipos_examenes, FormularioUser, FormularioFuncionario
 from .models import Pacientes, Examenes, Funcionario
+from django.contrib.auth.models import User
 
 from django.conf import settings
 
 
-def crear_user(request):
+def crear_funcionario(request):
+    formularioUser = FormularioUser()
+    formularioFunc = FormularioFuncionario()
     if request.method=="GET":
-            formulario = FormularioUser()
-            context = {'formulario':formulario}
-            return render(request, 'form/crear_user.html', context)
+            ERROR = False
+            context = {'formularioUser':formularioUser, 'formularioFunc': formularioFunc, 'ERROR': ERROR}
+            return render(request, 'form/crear_funcionario.html', context)
 
     elif request.method=="POST":
-            #print ("llego POST OK", request.POST)
-            
-            formulario_devuelto = FormularioUser(request.POST)
-
-
-def crear_funcionario(request):
-    if request.method=="GET":
-            formulario = FormularioPacientes()
-            contex = {'formulario':formulario}
-            return render(request, 'form/crear_pacientes.html', contex)
+            print('RPOST:', request.POST['username'])
+            #formulario_devueltoU, formulario_devueltoF = FormularioUser, FormularioFuncionario(request.POST)
+            if request.POST['password'] != request.POST['passwordConfirm']:
+                ERROR = True
+                context = {'formularioUser':formularioUser, 'formularioFunc': formularioFunc, 'ERROR': ERROR}
+                print('no se pudo crear el user')
+                return render( request, 'form/crear_funcionario.html', context)
+            else:
+                try:
+                    user_new = User.objects.create(
+                        username = request.POST['username'],
+                        email = request.POST['email'],
+                        password = request.POST['password'],
+                    )
+                except:
+                    ERROR = True
+                    context = {'formularioUser':formularioUser, 'formularioFunc': formularioFunc, 'ERROR': ERROR}
+                    print('no se pudo crear el user')
+                    return render( request, 'form/crear_funcionario.html', context)
+    
+            try:
+                funcionario = Funcionario.objects.create(
+                    usuario = user_new,
+                    nombre = request.POST['nombre'],
+                    rol = request.POST['rol'],
+                )
+            except:
+                ERROR = True
+                context = {'formularioUser':formularioUser, 'formularioFunc': formularioFunc, 'ERROR': ERROR}
+                print('no se pudo crear el funcionario')
+                return render( request, 'form/crear_funcionario.html', context)
+            return redirect('app1:inicio')
 
 
 # C de CRUD
 def crear_pacientes(request):
-        if request.method=="GET":
-            formulario = FormularioPacientes()
-            contex = {'formulario':formulario}
-            return render(request, 'form/crear_pacientes.html', contex)
+    formularioPaciente = FormularioPacientes()
+    formularioUser = FormularioUser()
+    if request.method=="GET":
+        ERROR = False
+        contex = {'formularioPaciente':formularioPaciente, 'formularioUser': formularioUser, 'ERROR': ERROR}
+        return render(request, 'form/crear_pacientes.html', contex)
 
-        elif request.method=="POST":
-            #print ("llego POST OK", request.POST)
-            
-            formulario_devuelto = FormularioPacientes(request.POST)
-           
-        if formulario_devuelto.is_valid() == True:
-            datos_formulario = formulario_devuelto.cleaned_data
+    elif request.method=="POST":
+        #print ("llego POST OK", request.POST)
 
-            try:
-                pac = Pacientes.objects.create(
-                    rut=datos_formulario['rut'].replace('.', ''), 
-                    nombre=datos_formulario['nombre'],
-                    apellido=datos_formulario['apellido'],
-                    email=datos_formulario['email'],
-                    tutor=datos_formulario['tutor'],
-                    direccion=datos_formulario['direccion'],
-                    enfermedades=datos_formulario['enfermedades'],
-                )
-                pac.save()
-                return redirect('form:pacientes_creados')
-            except:
-                formulario = FormularioPacientes()
-                context = {'formulario':formulario, 'ERROR': True}
-                return render(request, 'form/crear_pacientes.html', context)
+        if request.POST['password'] != request.POST['passwordConfirm']:
+            ERROR = True
+            contex = {'formularioPaciente':formularioPaciente, 'formularioUser': formularioUser, 'ERROR': ERROR}
+            print('las contraseñas no coinciden')
+            return render( request, 'form/crear_paciente.html', context)
+
         else:
-            contex = {'formulario':formulario_devuelto}
-            return render (request, 'form/crear_pacientes.html', contex )
+            try:
+                user_new = User.objects.create(
+                    username = request.POST['username'],
+                    email = request.POST['email'],
+                    password = request.POST['password'],
+                )
+            except:
+                ERROR = True
+                contex = {'formularioPaciente':formularioPaciente, 'formularioUser': formularioUser, 'ERROR': ERROR}
+                print('no se pudo crear el user')
+                return render( request, 'form/crear_paciente.html', context)
+        
+
+        try:
+            paciente = Pacientes.objects.create(
+                usuario = user_new,
+                rut=request.POST['rut'].replace('.', ''), 
+                nombre=request.POST['nombre'],
+                apellido=request.POST['apellido'],
+                email=request.POST['email'],
+                tutor=request.POST['tutor'],
+                direccion=request.POST['direccion'],
+                enfermedades=request.POST['enfermedades'],
+                rol = request.POST['rol']
+            )
+            return redirect('form:pacientes_creados')
+        except:
+            ERROR = True
+            contex = {'formularioPaciente':formularioPaciente, 'formularioUser': formularioUser, 'ERROR': ERROR}
+            print('no se pudo crear el paciente')
+            return render( request, 'form/crear_paciente.html', context)
+    else:
+        ERROR = True
+        contex = {'formularioPaciente':formularioPaciente, 'formularioUser': formularioUser, 'ERROR': ERROR}
+        print('algo muy raro paso')
+        return render( request, 'form/crear_paciente.html', context)
 
 #D de CRUD
 def eliminar_pacientes(request, rut):
@@ -89,7 +135,8 @@ def editar_pacientes(request, rut):
                             email=datos_formulario['email'],
                             tutor=datos_formulario['tutor'],
                             direccion=datos_formulario['direccion'],
-                            enfermedades=datos_formulario['enfermedades']
+                            enfermedades=datos_formulario['enfermedades'],
+                            rol = datos_formulario['rol']
                             )
             return redirect('form:pacientes_creados')
         else:

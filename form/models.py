@@ -8,8 +8,12 @@ from django.contrib.auth.models import User
 # Create your models here.
 
 class Funcionario(models.Model):
-    nombre = models.OneToOneField(User, on_delete = models.CASCADE)
+    usuario = models.OneToOneField(User, on_delete = models.CASCADE)
+    nombre = models.CharField(max_length=25)
     rol = models.CharField(max_length=50, default="medico")
+
+    def str(self):
+        return self.usuario.username + " --> " + self.rol
 
 class Pacientes(models.Model):
 

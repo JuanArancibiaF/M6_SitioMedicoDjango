@@ -12,7 +12,24 @@
             <form action="" method="POST" novalidate>
                 {% csrf_token %}
                 <table>
-                    {{formulario.as_table}}
+                    <tr><th>
+                            <label for="id_username">Nombre de usuario:</label>
+                        </th><td>
+                            <input type="text" name="username" required id="id_username">
+                    </td></tr>
+                    {{formularioPaciente.as_table}}
+                    
+                    <tr><th>
+                        <label for="id_password">Contraseña:</label>
+                    </th><td>
+                        <input type="password" name="password" required id="id_password">
+                    </td></tr>
+                    <tr><th>
+                        <label for="id_password">Confirmar contraseña:</label>
+                    </th><td>
+                        <input type="password" name="passwordConfirm" required id="id_passwordConfirm">
+                    </td></tr>
+                    
                 </table>
                 <br>
                 <div class="center-text">

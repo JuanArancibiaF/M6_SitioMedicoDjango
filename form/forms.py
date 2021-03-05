@@ -6,9 +6,25 @@ from django.core.exceptions import ValidationError
 from form.models import Pacientes, Examenes
 
 class FormularioUser(forms.Form):
-    username= forms.CharField()
-    email = forms.CharField()
-    password = forms.CharField()
+    username= forms.CharField(error_messages={'required': 'Por favor ingresa tu nombre de usuario'})
+    email = forms.EmailField(error_messages={'required': 'Por favor ingresa tu email'})
+    password = forms.CharField(error_messages={'required': 'Por favor ingresa tu contraseña'})
+    passwordConfirm = forms.CharField(error_messages={'required': 'Por favor ingresa tu contraseña'})
+
+
+GEEKS_CHOICES =( 
+    ("medico", "medico"),  
+) 
+
+class FormularioFuncionario(forms.Form):
+    nombre = forms.CharField(error_messages={'required': 'Please enter your name'})
+    rol = forms.ChoiceField(choices = GEEKS_CHOICES)
+
+CHOICES =( 
+    ("paciente", "paciente"),
+    ("familiar", "familiar"),
+    ("tutor", "tutor"),     
+) 
 
 class FormularioPacientes(forms.Form):
     rut = forms.CharField()
@@ -18,6 +34,7 @@ class FormularioPacientes(forms.Form):
     tutor = forms.CharField()
     direccion = forms.CharField()
     enfermedades = forms.CharField()
+    rol = forms.ChoiceField(choices = CHOICES)
 
 class EditarPacientes(forms.Form):
     nombre = forms.CharField()
