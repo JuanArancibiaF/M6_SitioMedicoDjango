@@ -24,10 +24,11 @@ def crear_funcionario(request):
                 return render( request, 'form/crear_funcionario.html', context)
             else:
                 try:
-                    user_new = User.objects.create(
+                    user_new = User.objects.create_user(
                         username = request.POST['username'],
                         email = request.POST['email'],
                         password = request.POST['password'],
+                        is_staff = True,
                     )
                 except:
                     ERROR = True
@@ -69,7 +70,7 @@ def crear_pacientes(request):
 
         else:
             try:
-                user_new = User.objects.create(
+                user_new = User.objects.create_user(
                     username = request.POST['username'],
                     email = request.POST['email'],
                     password = request.POST['password'],

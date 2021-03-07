@@ -47,7 +47,7 @@ def login(request):
 
 def verificar_que_es_medico(user):
     #if user.role == 'medico':
-    return user.is_staff== True
+    return user.is_staff == True
     #else:
     #    return redirect(reverse('app1:fichaPaciente', kwargs={'rut': rut}))
 
