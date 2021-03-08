@@ -1,6 +1,7 @@
 # M6_SitioMedicoDjango
 Examen módulo 6 Django
 
+NOTA: EL EXAMEN FUE REALIZADO POR TODOS LOS INTEGRANTES, DONDE UNO ESCRIBIÓ EL CODIGO MIENTRAS LOS OTROS DICTABAN.
 
 El servidor web para InterSalud es Nginx:
 
@@ -13,3 +14,20 @@ una arquitectura de software mas completa esta herramienta permite  la configura
 balanceada entre diversos servidores, procurando que no colpasen y mantenteniendo el respaldo de los archivos en diferentes locaciones. Otra de sus cualidades es la 
 
   Finalmente por las razones mencionadas, hemos seleccionado a Nginx como el servidor HTTP ideal para un proyecto de la embergadura de InterSalud.
+  
+  
+  
+  
+  
+  Grupo 3: Juan Arancibia
+	  Luis Debia
+	  Luciano San Martin
+	  Rodrigo Testa
+	  Waldo Conejo
+	  
+Repo: https://github.com/JuanArancibiaF/M6_SitioMedicoDjango
+BD: intersalud2.sql
+
+[Superuser: intersalud  - contraseña: 1234]
+[Médico: luis  -  contraseña: 1234]
+[Paciente: waldo - rut: 10123123-1 - contraseña: 1234]

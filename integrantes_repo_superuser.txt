@@ -1,0 +1,8 @@
+Grupo 3: Juan Arancibia
+	  Luis Debia
+	  Luciano San Martin
+	  Rodrigo Testa
+	  
+Repo: https://github.com/JuanArancibiaF/M6_SitioMedicoDjango
+
+Superuser: intersalud  - contraseña: 1234
