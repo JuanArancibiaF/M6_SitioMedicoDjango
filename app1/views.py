@@ -5,8 +5,11 @@ from django.http import HttpResponse
 from django.http import HttpResponsePermanentRedirect
 from app1.forms import FormularioBusqueda, FormularioBusquedaLogin
 from form.models import Pacientes, Examenes
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib.auth import authenticate, login
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+
+
 
 
 # Create your views here.
@@ -49,10 +52,14 @@ def verificar_que_es_medico(user):
     #if user.role == 'medico':
     return user.is_staff == True
     #else:
-    #    return redirect(reverse('app1:fichaPaciente', kwargs={'rut': rut}))
+
+def funcion_permiso(user):
+    return user.is_staff == True
 
 @login_required(login_url="/accounts/login/")
+@user_passes_test(funcion_permiso)
 def fichaMedica(request):
+
     formulario = FormularioBusqueda()
     if request.method == "GET":
         formulario = FormularioBusqueda()

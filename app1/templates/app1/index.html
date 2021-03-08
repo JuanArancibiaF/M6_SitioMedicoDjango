@@ -19,12 +19,15 @@
       <p><a class="btn btn-primary btn-lg" href="{% url 'app1:fichaMedica' %}">
         Ficha Medica</a></p>
       {% if user.is_authenticated %}
-      <p><br><b>Username:</b> {{ user.username }}<br><b>Email:</b> {{ user.email }}<br><b>Rol en la aplicación:</b> {{ user.perfil.rol }}</p><br>
+      <p><br><b>Username:</b> {{ user.username }}<br><b>Email:</b> {{ user.email }}<br><b>Rol en la aplicación:</b> {{ user.perfil.rol }}</p>
       <p><a class="btn btn-danger btn-lg" href="{% url 'logout' %}?next={% url 'app1:inicio' %}">
         Cerrar Sesion</a></p>
       {% else %}
-      <a class="btn btn-secondary btn-lg" href="{% url 'login' %}?next={{ request.path }}">
-        Iniciar sesión</a> 
+      <div class="center-text">
+        <a class="btn btn-secondary btn-lg" href="{% url 'login' %}?next={{ request.path }}">
+          Iniciar sesión</a> 
+      </div>
+      
       {% endif %}
     </p>
   </div>

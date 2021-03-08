@@ -24,13 +24,20 @@
         <form method="post" action="{% url 'login' %}">
             {% csrf_token %}
             {{ form.as_p }}
-            <input type="submit" class="btn btn-primary" value="Ingresar" />
-            <input type="hidden" name="next" value="{{ next }}" />
+            <div  class="center-text">
+                <input type="submit" class="btn btn-primary btn-lg" value="Ingresar" />
+                <input type="hidden" name="next" value="{{ next }}" />
+            </div>
+            
         </form>
     </div>
     {% else %}
         <p>Un usuario ya ha iniciado sesión</p>
     {% endif %}
+    <div class="center-text">
+        <a class="btn btn-primary btn-lg" href="{% url 'app1:inicio' %}" role="button">Volver</a>
+    </div>
+    
    
     
 </div>

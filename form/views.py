@@ -2,10 +2,19 @@ from django.shortcuts import render, redirect
 from .forms import FormularioPacientes, tipos_examenes, FormularioUser, FormularioFuncionario
 from .models import Pacientes, Examenes, Funcionario
 from django.contrib.auth.models import User
-
+from django.contrib.auth.decorators import login_required, user_passes_test
 from django.conf import settings
 
+def verificar_que_es_medico(user):
+    #if user.role == 'medico':
+    return user.is_staff == True
+    #else:
 
+def funcion_permiso(user):
+    return user.is_superuser  == True
+
+@login_required(login_url="/accounts/login/")
+@user_passes_test(funcion_permiso)
 def crear_funcionario(request):
     formularioUser = FormularioUser()
     formularioFunc = FormularioFuncionario()
@@ -48,6 +57,9 @@ def crear_funcionario(request):
                 print('no se pudo crear el funcionario')
                 return render( request, 'form/crear_funcionario.html', context)
             return redirect('app1:inicio')
+
+    def test_func(self):
+            return verificar_que_es_medico(self.request.user)
 
 
 # C de CRUD
