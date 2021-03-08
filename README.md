@@ -24,5 +24,8 @@ balanceada entre diversos servidores, procurando que no colpasen y mantenteniend
 	  Rodrigo Testa
 	  
 Repo: https://github.com/JuanArancibiaF/M6_SitioMedicoDjango
+BD: intersalud2.sql
 
 Superuser: intersalud  - contraseña: 1234
+Médico: luis  -  contraseña: 1234
+Paciente: waldo - rut: 10123123-1 - contraseña: 1234
