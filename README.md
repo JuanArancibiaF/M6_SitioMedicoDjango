@@ -1,6 +1,7 @@
 # M6_SitioMedicoDjango
 Examen módulo 6 Django
 
+NOTA: EL EXAMEN FUE REALIZADO POR TODOS LOS INTEGRANTES, DONDE UNO ESCRIBIÓ EL CODIGO MIENTRAS LOS OTROS DICTABAN.
 
 El servidor web para InterSalud es Nginx:
 
