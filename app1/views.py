@@ -27,6 +27,8 @@ def calendarioHoras(request):
 def administracion(request):
     return render(request, 'app1/administracion.html')
 
+
+#Inicio Login
 def login(request):
     formulario = FormularioBusquedaLogin()
     if request.method == "GET":
