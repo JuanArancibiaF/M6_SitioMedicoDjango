@@ -7,3 +7,4 @@ su facilidad para tener vario usuarios web , es de servicio gratiuto y de codigo
 para preyectos standar dando facilidad para lenguajes como Python y base de datos de Postgres de esta  manera puede ser levantado 
 al servidro para posterior presentacion y ejecucion al ser almacenados en un lugar fisico permite la cual permite  conexiones
 bidireccionales o unidireccionales con la máquina del cliente, tras lo cual se genera una respuesta del lado del cliente 
+, pacientes ingresados.
