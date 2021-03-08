@@ -13,3 +13,16 @@ una arquitectura de software mas completa esta herramienta permite  la configura
 balanceada entre diversos servidores, procurando que no colpasen y mantenteniendo el respaldo de los archivos en diferentes locaciones. Otra de sus cualidades es la 
 
   Finalmente por las razones mencionadas, hemos seleccionado a Nginx como el servidor HTTP ideal para un proyecto de la embergadura de InterSalud.
+  
+  
+  
+  
+  
+  Grupo 3: Juan Arancibia
+	  Luis Debia
+	  Luciano San Martin
+	  Rodrigo Testa
+	  
+Repo: https://github.com/JuanArancibiaF/M6_SitioMedicoDjango
+
+Superuser: intersalud  - contraseña: 1234
